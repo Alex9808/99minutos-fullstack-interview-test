@@ -15,7 +15,7 @@ de un repositorio git.
 ## Instrucciones para la ejecucion
 * Clonar el codigo del servidor e instalar sus dependencias
 ````
-git clone https://github.com/Alex9808/99minutos-fullstack-interview-test.git git-api
+git clone https://github.com/Alex9808/99minutos-fullstack-interview-test.git -b dev git-api
 cd git-api
 yarn
 ````
