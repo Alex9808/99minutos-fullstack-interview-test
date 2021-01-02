@@ -19,24 +19,26 @@ git clone https://github.com/Alex9808/99minutos-fullstack-interview-test.git -b 
 cd git-api
 yarn
 ````
-* Instalar las dependencias para el cliente con el comando 
-````
-cd client
-yarn
-````
 * Iniciar el servidor del servicio api esto iniciara una instancia del servidor en ``http://localhost:5000``
 ````
 cd..
 yarn start
 ````
-* Iniciar el servidor del cliente usando el siguiente comando
+* Ingresar a http://localhost:5000
+
+## Iniciar el cliente en desarrollo (Opcional)
+* Instalar las dependencias para el cliente con el comando 
 ````
 cd client
+yarn
+````
+* Iniciar el servidor del cliente usando el siguiente comando
+````
 yarn startClient 
 ````
 Ingresar a ``http://localhost:3000`` y escribir una url de cualquier repositorio o seleccionando uno de los ya preestablecidos.
 
-### Notas
-* En dado caso de que el puerto para el servicio API este en uso puede cambiarlo en el archivo ``git-api/bin/www`` ubicando la variable ``port``. Si este se a modificar tambien debe modificar el campo ``proxy`` en ``client/package.json``.
-* Para inspeccionar un nuevo repositorio se necesita detener el servidor y eliminar la carpeta ``tmp``.
- 
+ ### Notas
+ * En dado caso de que el puerto para el servicio API este en uso puede cambiarlo en el archivo ``git-api/bin/www`` ubicando la variable ``port``. Si este se a modificar tambien debe modificar el campo ``proxy`` en ``client/package.json``.
+ * Para inspeccionar un nuevo repositorio se necesita detener el servidor y eliminar la carpeta ``tmp``.
+ * El codigo fuente del cliente tambien se puede encontrar en https://github.com/Alex9808/git-client.git
