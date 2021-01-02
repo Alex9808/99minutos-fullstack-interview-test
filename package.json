@@ -11,7 +11,7 @@
     "express": "~4.16.1",
     "morgan": "~1.9.1",
     "nodegit": "^0.27.0",
-    "path": "^0.12.7",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@prisma/cli": "2.13.1"
