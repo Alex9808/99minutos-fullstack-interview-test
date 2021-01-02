@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
         return res.status(400).send('Bad Request');
     try {
         let id = Date.now().toString();
-        let signature = authorName && authorEmail ? git.Signature.now(authorName, authorEmail) : await git.Signature.default(req.repo);
+        let signature = authorName && authorEmail ? git.Signature.now(authorName, authorEmail) : await git.Signature.default(req.app.get('repo'));
         let mergedAt = null;
         if (status === 2) {
             id = await merge(req.app.get('repo'), base_branch, compare_branch, signature);

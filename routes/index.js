@@ -31,11 +31,16 @@ router.get('/', async (req, res) => {
 */
 router.post('/clone', async (req, res) => {
     try {
+        await prisma.prs.deleteMany();
+    }catch (e) {
+        // No entries in  pull requests
+        console.log(e);
+    }
+    try {
         const {repo_url} = req.body;
         const repoPath = path.resolve(__dirname, '../tmp');
         const repo = await clone(repoPath, repo_url);
         const details = await getRepoDetail(repo);
-        await prisma.prs.deleteMany();
         req.app.set('repo', repo);
         res.status(201).json(details);
     } catch (e) {
