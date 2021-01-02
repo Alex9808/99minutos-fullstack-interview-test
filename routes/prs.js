@@ -43,7 +43,6 @@ router.get('/:pr_id', async (req, res) => {
 router.post('/', async (req, res) => {
     let {name, description, base_branch, compare_branch, author, status = 0} = req.body;
     let {authorName, authorEmail} = author || {};
-    console.log(req.body);
     if (!name || !description || !base_branch || !compare_branch)
         return res.status(400).send('Bad Request');
     try {
@@ -51,7 +50,7 @@ router.post('/', async (req, res) => {
         let signature = authorName && authorEmail ? git.Signature.now(authorName, authorEmail) : await git.Signature.default(req.repo);
         let mergedAt = null;
         if (status === 2) {
-            id = await merge(req.repo, base_branch, compare_branch, signature);
+            id = await merge(req.app.get('repo'), base_branch, compare_branch, signature);
             mergedAt = new Date(Date.now());
         }
         await prisma.prs.create({
@@ -102,7 +101,7 @@ router.put('/:pr_id/merge', async (req, res) => {
     if (pr.status === 2)
         return res.status(500).json({msg: 'Pull request is already merged'});
     let signature = git.Signature.now(pr.authorName, pr.authorEmail);
-    let newId = await merge(req.repo, pr.base_branch, pr.compare_branch, signature);
+    let newId = await merge(req.app.get('repo'), pr.base_branch, pr.compare_branch, signature);
     let mergedAt = new Date(Date.now());
     await prisma.prs.update({where: {id: pr.id}, data: {status: 2, mergedAt: mergedAt, id: newId}});
     res.status(204).json({msg: 'Merged'});

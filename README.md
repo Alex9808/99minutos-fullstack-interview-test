@@ -38,4 +38,5 @@ Ingresar a ``http://localhost:3000`` y escribir una url de cualquier repositorio
 
 ### Notas
 * En dado caso de que el puerto para el servicio API este en uso puede cambiarlo en el archivo ``git-api/bin/www`` ubicando la variable ``port``. Si este se a modificar tambien debe modificar el campo ``proxy`` en ``client/package.json``.
+* Para inspeccionar un nuevo repositorio se necesita detener el servidor y eliminar la carpeta ``tmp``.
  

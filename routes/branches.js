@@ -9,11 +9,11 @@ const express = require('express'),
 router.get('/', async (req, res, next) => {
     try {
 
-        let refNames = await req.repo.getReferenceNames(git.Reference.TYPE.ALL);
+        let refNames = await req.app.get('repo').getReferenceNames(git.Reference.TYPE.ALL);
         let branches = [];
         for (const _refName of refNames) {
-            let ref = await req.repo.getReference(_refName);
-            if (ref.isBranch() === 1)
+            let ref = await req.app.get('repo').getReference(_refName);
+            if (ref.isConcrete())
                 branches.push({name: ref.shorthand(), ref_name: ref.name()});
         }
         res.json(branches);

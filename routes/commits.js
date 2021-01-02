@@ -11,7 +11,7 @@ const express = require('express'),
 router.get('/', (req, res, next) => {
     let ref = req.query.ref;
     let his = [];
-    req.repo.getBranchCommit(ref).then(commit => {
+    req.app.get('repo').getBranchCommit(ref).then(commit => {
         let history = commit.history(git.Revwalk.SORT.TIME);
         history.on("commit", comm => {
             let tmp = {};
@@ -22,7 +22,7 @@ router.get('/', (req, res, next) => {
             his.push(tmp);
         });
         history.on('end', async () => {
-            let branchDetail = await req.repo.getBranch(ref);
+            let branchDetail = await req.app.get('repo').getBranch(ref);
             res.json({name: branchDetail.shorthand(), commits: his});
         })
         history.start();
@@ -37,7 +37,7 @@ router.get('/', (req, res, next) => {
 */
 router.get('/:commit', (req, res) => {
     let obj = {};
-    req.repo.getCommit(req.params.commit).then(commit => {
+    req.app.get('repo').getCommit(req.params.commit).then(commit => {
         obj['commit'] = commit.sha();
         obj['author'] = {name: commit.author().name(), email: commit.author().email()};
         obj['date'] = commit.date();
