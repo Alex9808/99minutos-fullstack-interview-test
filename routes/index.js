@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
         const details = await getRepoDetail(repo);
         req.app.set('repo', repo);
         res.json(details);
-    }catch (e) {
+    } catch (e) {
         console.error(e);
         res.status(500).end();
     }
@@ -30,14 +30,15 @@ router.get('/', async (req, res) => {
 * Error: {status_code: 500, body: 'Internal server error'}
 */
 router.post('/clone', async (req, res) => {
-    try{
-    const {repo_url} = req.body;
-    const repoPath = path.resolve(__dirname, '../tmp');
-    const repo = await clone(repoPath, repo_url);
-    const details = await getRepoDetail(repo);
-    req.app.set('repo', repo);
-    res.status(201).json(details);
-    }catch (e) {
+    try {
+        const {repo_url} = req.body;
+        const repoPath = path.resolve(__dirname, '../tmp');
+        const repo = await clone(repoPath, repo_url);
+        const details = await getRepoDetail(repo);
+        await prisma.prs.deleteMany();
+        req.app.set('repo', repo);
+        res.status(201).json(details);
+    } catch (e) {
         console.error(e);
         res.status(500).end();
     }
@@ -45,7 +46,7 @@ router.post('/clone', async (req, res) => {
 
 const clone = async (repoPath, repoUrl) => await git.Clone.clone(repoUrl, repoPath, {local: 2})
 
-async function getRepoDetail(repo){
+async function getRepoDetail(repo) {
     const config = await repo.config();
     const buf = await config.getStringBuf("remote.origin.url");
     let url = buf.toString();
