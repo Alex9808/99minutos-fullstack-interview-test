@@ -2,7 +2,7 @@ const express = require('express'),
     git = require('nodegit'),
     path = require("path"),
     fs = require('fs'),
-    {PrismaClient} = require('../prisma/prisma-client'),
+    {PrismaClient} = require('@prisma/client'),
     prisma = new PrismaClient(),
     router = express.Router();
 

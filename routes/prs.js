@@ -1,6 +1,6 @@
 const express = require('express'),
     git = require('nodegit'),
-    {PrismaClient} = require('../prisma/prisma-client'),
+    {PrismaClient} = require('@prisma/client'),
     router = express.Router(),
     prisma = new PrismaClient(); // I use Prisma for DB operations
 /*
