@@ -49,3 +49,4 @@ Ingresar a ``http://localhost:3000`` y escribir una url de cualquier repositorio
     * Se quiere hacer una operacion de Merge de una branch remota a una remota o a una local.
     * El autor por defecto del repositorio no se encuentra (se tiene que ingresar los datos del autor)
  * La funcion Merge solo funciona con branchs locales.
+ * El funcionamiento de este proyecto ha sido probado en 3 equipos diferentes y solo en 2 funciono, en el equipo que no funciono se debio a fallas en el ORM por iniciarse en un entorno emulado y con permisos de administrador.  
