@@ -37,5 +37,5 @@ yarn startClient
 Ingresar a ``http://localhost:3000`` y escribir una url de cualquier repositorio o seleccionando uno de los ya preestablecidos.
 
 ### Notas
-* En dado caso de que el puerto para el servicio API este en uso puede cambiarlo en el archivo ``git-api/bin/www`` ubicando la variable ``port``. Si este se llega a modificar tambien debe modificar el campo ``proxy`` en ``git-client/package.json``.
+* En dado caso de que el puerto para el servicio API este en uso puede cambiarlo en el archivo ``git-api/bin/www`` ubicando la variable ``port``. Si este se a modificar tambien debe modificar el campo ``proxy`` en ``client/package.json``.
  
