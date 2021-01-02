@@ -19,6 +19,10 @@ git clone https://github.com/Alex9808/99minutos-fullstack-interview-test.git -b 
 cd git-api
 yarn
 ````
+* Inicializar el ORM para un correcto funcionamiento de la DB
+````
+yarn prisma generate
+````
 * Iniciar el servidor del servicio api esto iniciara una instancia del servidor en ``http://localhost:5000``
 ````
 yarn start
@@ -41,3 +45,7 @@ Ingresar a ``http://localhost:3000`` y escribir una url de cualquier repositorio
  * En dado caso de que el puerto para el servicio API este en uso puede cambiarlo en el archivo ``git-api/bin/www`` ubicando la variable ``port``. Si este se a modificar tambien debe modificar el campo ``proxy`` en ``client/package.json``.
  * Para inspeccionar un nuevo repositorio se necesita detener el servidor y eliminar la carpeta ``tmp``.
  * El codigo fuente del cliente tambien se puede encontrar en https://github.com/Alex9808/git-client.git
+ * Al momento de crear un Pull Request puede ser por dos situaciones: 
+    * Se quiere hacer una operacion de Merge de una branch remota a una remota o a una local.
+    * El autor por defecto del repositorio no se encuentra (se tiene que ingresar los datos del autor)
+ * La funcion Merge solo funciona con branchs locales.
