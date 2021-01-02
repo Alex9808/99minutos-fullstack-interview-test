@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
         res.json(prs);
     } catch (e) {
         console.error(e);
-        json.status(500).send();
+        res.status(500).send();
     }
 });
 /*
@@ -30,7 +30,7 @@ router.get('/:pr_id', async (req, res) => {
         res.json(pr);
     } catch (e) {
         console.error(e);
-        json.status(500).send();
+        res.status(500).send();
     }
 });
 /*
