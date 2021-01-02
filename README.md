@@ -21,7 +21,6 @@ yarn
 ````
 * Iniciar el servidor del servicio api esto iniciara una instancia del servidor en ``http://localhost:5000``
 ````
-cd..
 yarn start
 ````
 * Ingresar a http://localhost:5000
