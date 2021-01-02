@@ -88,8 +88,10 @@ class PRCreateView extends Component {
         data['compare_branch'] = compareBranch;
         data['status'] = status;
         if (!useDefaultAuthor) {
-            data['author']['authorName'] = authorName;
-            data['author']['authorEmail'] = authorEmail;
+            data['author'] = {
+                authorName: authorName,
+                authorEmail: authorEmail
+            }
         }
 
         this.props.createPr(data);

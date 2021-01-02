@@ -49,7 +49,7 @@ router.post('/clone', async (req, res) => {
     }
 });
 
-const clone = async (repoPath, repoUrl) => await git.Clone.clone(repoUrl, repoPath, {local: 2})
+const clone = async (repoPath, repoUrl) => await git.Clone.clone(repoUrl, repoPath)
 
 async function getRepoDetail(repo) {
     const config = await repo.config();
